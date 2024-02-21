@@ -2,7 +2,9 @@ package ladder.domain;
 
 import static ladder.domain.bridge.Direction.values;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.random.RandomGenerator;
 import ladder.domain.bridge.Bridge;
@@ -14,8 +16,8 @@ public class Line {
     private final List<Bridge> bridges;
     private final Height height;
 
-    public Line(List<Bridge> bridges, Height height) {
-        this.bridges = bridges;
+    public Line(final List<Bridge> bridges, final Height height) {
+        this.bridges = new ArrayList<>(bridges);
         this.height = height;
     }
 
@@ -37,6 +39,6 @@ public class Line {
     }
 
     public List<Bridge> getLines() {
-        return bridges;
+        return Collections.unmodifiableList(bridges);
     }
 }

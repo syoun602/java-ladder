@@ -1,5 +1,7 @@
 package ladder.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 import ladder.domain.bridge.Bridge;
@@ -13,7 +15,7 @@ public class Ladder {
     private final int width;
 
     private Ladder(final List<Line> lines, final int width) {
-        this.lines = lines;
+        this.lines = new ArrayList<>(lines);
         this.width = width;
     }
 
@@ -37,6 +39,6 @@ public class Ladder {
     }
 
     public List<Line> getLines() {
-        return lines;
+        return Collections.unmodifiableList(lines);
     }
 }
